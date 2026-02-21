@@ -1,0 +1,81 @@
+#!/bin/bash
+
+APP_BIN="/app/guacamole/sbin/guacd"
+START_CMD="$APP_BIN -L debug"
+
+# Function to find the GUACD's Process ID
+# Matches the specific command path to avoid killing unrelated processes
+get_pid() {
+    pgrep -f "$APP_BIN"
+}
+
+# Start Function
+start() {
+    PID=$(get_pid)
+    if [ -z "$PID" ]; then
+        echo "Starting application..."
+        # Running in background so the script can exit
+        $START_CMD &
+        echo "GUACD started."
+    else
+        echo "GUACD is already running (PID: $PID)"
+    fi
+}
+
+# Stop Function
+stop() {
+    PID=$(get_pid)
+    if [ -z "$PID" ]; then
+        echo "GUACD is not running."
+    else
+        echo "GUACD application (PID: $PID)..."
+        kill $PID
+        
+        # Verify it stopped, otherwise force kill
+        sleep 2
+        if ps -p $PID > /dev/null; then
+            echo "Graceful stop failed. Forcing termination..."
+            kill -9 $PID
+        fi
+        echo "GUACD stopped."
+    fi
+}
+
+# Restart Function
+restart() {
+    echo "Restarting GUACD..."
+    stop
+    sleep 1
+    start
+}
+
+# Status Function
+status() {
+    PID=$(get_pid)
+    if [ -n "$PID" ]; then
+        echo "GUACD is running with PID: $PID"
+    else
+        echo "GUACD is stopped."
+    fi
+}
+
+# Handle user input
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+exit 0

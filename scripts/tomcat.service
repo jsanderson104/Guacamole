@@ -1,0 +1,83 @@
+#!/bin/bash
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export GUACAMOLE_HOME=/app/guacamole-client
+export PATH=$PATH:/app/tomcat/bin:/app/guacamole/sbin:/app/guacamole/bin:/app/tomcat/bin
+export CATALINA_HOME="/app/tomcat"
+START_SCRIPT="$CATALINA_HOME/bin/startup.sh"
+STOP_SCRIPT="$CATALINA_HOME/bin/shutdown.sh"
+
+# Function to find Tomcat's Process ID
+get_pid() {
+    echo $(ps -ef | grep "org.apache.catalina.startup.Bootstrap" | grep -v grep | awk '{print $2}')
+}
+
+# Start Function
+start() {
+    PID=$(get_pid)
+    if [ -z "$PID" ]; then
+        echo "Starting Tomcat..."
+        sh "$START_SCRIPT"
+    else
+        echo "Tomcat is already running (PID: $PID)"
+    fi
+}
+
+# Stop Function
+stop() {
+    PID=$(get_pid)
+    if [ -z "$PID" ]; then
+        echo "Tomcat is not running."
+    else
+        echo "Stopping Tomcat (PID: $PID)..."
+        sh "$STOP_SCRIPT"
+        # Optional: Force kill if it doesn't stop gracefully after a delay
+        sleep 5
+        PID=$(get_pid)
+        if [ -n "$PID" ]; then
+            echo "Graceful shutdown failed. Forcing stop..."
+            kill -9 $PID
+        fi
+    fi
+}
+
+# Restart Function
+restart() {
+    echo "Restarting Tomcat..."
+    stop
+    sleep 2
+    start
+}
+
+# Status Function
+status() {
+    PID=$(get_pid)
+    if [ -n "$PID" ]; then
+        echo "Tomcat is running with PID: $PID"
+    else
+        echo "Tomcat is stopped."
+    fi
+}
+
+# Case statement to handle user input
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+exit 0
+/app/tomcat/bin/startup.sh
+#/app/guacamole/sbin/guacd -L debug 

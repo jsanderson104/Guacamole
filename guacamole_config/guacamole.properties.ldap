@@ -1,0 +1,14 @@
+guacd-hostname: localhost
+guacd-port:     4822
+user-mapping:   /app/guacamole-client/user-mapping.xml
+
+
+
+# Auth provider class
+auth-provider: net.sourceforge.guacamole.net.auth.ldap.LDAPAuthenticationProvider
+# LDAP properties
+ldap-hostname:           192.168.1.200
+ldap-port:               389
+ldap-user-base-dn:       cn=users,cn=accounts,dc=lab,dc=sanderson,dc=com
+ldap-username-attribute: uid
+ldap-config-base-dn:     cn=groups,cn=accounts,dc=lab,dc=sanderson,dc=com

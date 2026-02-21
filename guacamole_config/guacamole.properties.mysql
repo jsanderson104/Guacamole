@@ -1,0 +1,9 @@
+guacd-hostname: localhost
+guacd-port:     4822
+user-mapping:   /app/guacamole-client/user-mapping.xml
+auth-provider:  net.sourceforge.guacamole.net.basic.BasicFileAuthenticationProvider
+mysql-hostname: 127.0.0.1
+mysql-port: 3306
+mysql-database: guac
+mysql-username: guac
+mysql-password: guac
