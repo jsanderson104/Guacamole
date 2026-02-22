@@ -11,7 +11,11 @@ MARIADB_PW="guac"
 
 podman pod stop $POD 2>/dev/null ; 
 podman pod rm $POD 2>/dev/null ; 
-podman pod create --name $POD -p 9090:8080 -p 5306:3306
+podman pod create --name $POD \
+	-p 9090:8080 \
+	-p 5306:3306 \
+	-p 4822:4822 \
+	-p 8443:443
 
 # BUILD our Guacamole Web and GUACD image. Review Containerfile for more in-depth information.
 TMPDIR=/home podman build -t ubuntu2404-guac -f Containerfile
@@ -41,3 +45,6 @@ mysql -uroot -pguac -h 127.0.0.1 -P 5306 $GUACDB < guacamole_db_setup_files/001-
 # Creates default admin user by modifying the guacamole_identity and guacamole_user, and guacamole_system_permissions tables in the database.
 mysql -uroot -pguac -h 127.0.0.1 -P 5306 $GUACDB < guacamole_db_setup_files/002-create-admin-user.sql
 
+
+# Setup NGINX proxy container
+podman run -dt --pod GUACAMOLE_APPLICATIONS --name nginx-guac -v ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf -v ./nginx/ssl:/etc/nginx/ssl nginx

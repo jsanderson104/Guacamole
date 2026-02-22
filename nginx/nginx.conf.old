@@ -1,0 +1,23 @@
+server {
+    listen 443 ssl;
+    server_name guac.lab.sanderson.com
+
+    # SSL/TLS Certificate for the server
+    ssl_certificate /etc/nginx/ssl/guac.lab.sanderson.com.crt;
+    ssl_certificate_key /etc/nginx/ssl/guac.lab.sanderson.com.key;
+
+    # Smart Card/Client Certificate Authentication
+    ssl_client_certificate /etc/nginx/ssl/ca.crt; # Trusted CA
+    ssl_verify_client on; # Require client certificate
+    ssl_verify_depth 2;
+
+    location / {
+        proxy_pass http://192.168.1.44:9090/guacamole/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        
+        # Pass the username from the certificate (e.g., Common Name) to Guacamole
+        proxy_set_header Remote-User $ssl_client_s_dn_cn;
+    }
+}

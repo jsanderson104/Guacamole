@@ -1,0 +1,9 @@
+
+# Sample OpenID config 
+openid-authorization-endpoint: https://something.lab.sanderson.com
+openid-jwks-endpoint: https://someting.lab.sanderson.com
+openid-issuer: https://something.lab.sanderson.com
+openid-client-id: <OPENID CLIENT ID STRING>
+openid-redirect-uri: https://guac.lab.sanderson.com
+openid-groups-claim-type: admins
+extension-priority: openid

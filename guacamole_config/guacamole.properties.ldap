@@ -12,3 +12,9 @@ ldap-port:               389
 ldap-user-base-dn:       cn=users,cn=accounts,dc=lab,dc=sanderson,dc=com
 ldap-username-attribute: uid
 ldap-config-base-dn:     cn=groups,cn=accounts,dc=lab,dc=sanderson,dc=com
+
+# Not used, havent tried
+#ldap-encyption-method: none
+#ldap-search-bind-dn:
+#ldap-search-bind-dn-password:
+#ldap-user-search-filter: (objectClass=*)

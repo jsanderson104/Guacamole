@@ -48,7 +48,9 @@ RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd && \
 # install java runtime
 RUN apt install -y openjdk-17-jdk && dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
 
+
 # Download and compile Guacamole with bash script
+COPY guacamole-server-1.6.0.tar.gz /opt/src_downloads
 COPY scripts/build_guacamole.bash /opt/scripts
 RUN bash /opt/scripts/build_guacamole.bash
 
@@ -62,11 +64,14 @@ RUN  bash /opt/scripts/build_guacamole_client.bash
 COPY scripts/download_tomcat9-src.bash /opt/scripts
 RUN bash /opt/scripts/download_tomcat9-src.bash
 
+# ENABLE EXTENSIONS IN GUACAMOLE WEB for AUTHENTICATION methods.
+# Each extension needs it's properties set in guacamole.properties
 COPY extensions_downloaded/ /app/guacamole-client/
 COPY extensions/guacamole-auth-ldap-1.6.0.jar /app/guacamole-client/extensions
-#COPY extensions/guacamole-auth-header-1.6.0.jar /app/guacamole-client/extensions
+COPY extensions/guacamole-auth-header-1.6.0.jar /app/guacamole-client/extensions
 COPY extensions/guacamole-auth-jdbc-mysql-1.6.0.jar /app/guacamole-client/extensions
-#COPY extensions/guacamole-auth-sso-openid-1.6.0.jar /app/guacamole-client/extensions
+COPY extensions/guacamole-auth-sso-openid-1.6.0.jar /app/guacamole-client/extensions
+COPY extensions/guacamole-auth-sso-ssl-1.6.0.jar /app/guacamole-client/extensions
 WORKDIR /app/guacamole-client
 RUN chown -R guacamole:guacamole /app/guacamole-client/*
 
