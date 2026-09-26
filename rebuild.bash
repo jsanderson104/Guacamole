@@ -1,5 +1,5 @@
 #!/bin/bash
-# Author: Justin Sanderson, COLSA Corporation
+# Author: Justin Sanderson
 # Purpose: To build a fully-deployable, enterprise-ready, Apache Guacamole solution integrated with MariaDB to provide a Remote Connection Capability that authenticates seamlessly via SSO/SAML/OIDC..
 
 POD="GUACAMOLE_APPLICATIONS"
