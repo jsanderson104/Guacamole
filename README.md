@@ -31,14 +31,14 @@ Make a POD to put our 2 containers in (they'll share the same loopback address w
 podman pod create --name GUACAMOLE_APPLICATIONS -p 9090:8080 -p 5306:3306
 ```
 
+<h2>GUACAMOLE EXTENSIONS</h2><br>
+<b></b>ALL OF THE AUTH EXTENSIONS CAN BE DOWNLOADED FROM HERE</b>: https://guacamole.apache.org/releases/1.6.0/
+<br>Note: The extensions must match the guacamole-client version (guacamole-client -aka- the web interface WAR file launched by tomcat/webapps/*.war) <br>
 
-# ALL OF THE AUTH EXTENSIONS CAN BE DOWNLOADED FROM HERE: https://guacamole.apache.org/releases/1.6.0/
-# Note: The extensions must match the guacamole-client version (guacamole-client -aka- the web interface WAR file launched by tomcat/webapps/*.war)
-
-# The SQL schema import files for Guacamole database are located in the guacamole-auth-jdbc-1.6.0.tar.gz file:  001-*.sql & 002*.sql both need to be executed on the mariadb you have configured in the
-# guacamole.properties file. 
-# There are also some upgrade scripts in there for future reference (ie - if guacamole gets upgraded to 1.6.1 then they should supply a sql file IF the schema changes in the db.
-# NOTE: The needed SQL files, I have extracted and placed in ./guacamole_db_setup_files/ directory.
+The SQL schema import files for Guacamole database are located in the guacamole-auth-jdbc-1.6.0.tar.gz file:  001-*.sql & 002*.sql both need to be executed on the mariadb you have configured in the
+guacamole.properties file. <br>
+There are also some upgrade scripts in there for future reference (ie - if guacamole gets upgraded to 1.6.1 then they should supply a sql file IF the schema changes in the db.<br>
+NOTE: The needed SQL files, I have extracted and placed in ./guacamole_db_setup_files/ directory.<br>
 
 ---------------- User Mapping and Authentication extension info-------------
 # If the /app/guacamole-client/user-mapping.xml file exists - it will always be included in the config on startup.
