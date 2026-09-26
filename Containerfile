@@ -7,8 +7,8 @@ ARG UID=1003
 ARG GID=1003
 
 # Install packages needed to compile stuff. 
-RUN     apt update -y && \
-	apt upgrade -y && \
+RUN apt update -y && \
+	#apt upgrade -y && \
 	apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 	build-essential \
 	libcairo2-dev \
