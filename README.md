@@ -1,29 +1,35 @@
-=============================== GUACAMOLE BUILD PROJECT NOTES AND HOW TO =========================================
-# General information about this configuration and the image used.
-# 1. The container is being built with GUACD already precompiled and configured inside the image.
-# 2. The image is being built with Tomcat already download and ready to go.
-# 3. The Guacamole "client" which is actually the WebUI is downloaded and ready to go.
-# 4. Most everything is located in /app. 
-# 5. There are a few (2 or 3) occassions where I was forced to use a symbolic link.
-# 6. All of this is expected to be run in a POD so the MariaDB container can easily talk to the Guacamole container we start from the image we build.
-# 7. There's nothing special about the MariaDB version that I'm using.
-# 8. Setting up the DB for guacamole involves a few steps and is simple once you know where to look.. described in detail below.
-# 9. I don't precompile GUACD on the host. I do it inside the image after running the apt commands to update the container and install the build packages needed
-# 10. I also apt installed netcat, netstat, and the IP commands to make tshooting easier.
-# 11. The image is a little bloated b/c of #9 & #10
-# 12. Src data to do most of the building and configuring is copied into the image (inherently the container) in /opt
+<h1><center></center>GUACAMOLE BUILD PROJECT NOTES AND HOW TO</h1></center></h1><br>
+* General information about this configuration and the image used.<br><br>
 
-# Use the script to build the image then start an ephemeral container and attach to it for building/modifying purposes it drops to a bash shell and doesn't start the application
-cmd ot run on the container host shell-->  bash rebuild.bash
+- The container is being built with GUACD already precompiled and configured inside the image.<br>
+- The image is being built with Tomcat already download and ready to go.<br>
+- The Guacamole "client" which is actually the WebUI is downloaded and ready to go.<br>
+- Most everything is located in /app. <br>
+- There are a few (2 or 3) occassions where I was forced to use a symbolic link.<br>
+- All of this is expected to be run in a POD so the MariaDB container can easily talk to the Guacamole container we start from the image we build.<br>
+- There's nothing special about the MariaDB version that I'm using.<br>
+- Setting up the DB for guacamole involves a few steps and is simple once you know where to look.. described in detail below.<br>
+- I don't precompile GUACD on the host. I do it inside the image after running the apt commands to update the container and install the build packages needed<br>
+- I also apt installed netcat, netstat, and the IP commands to make tshooting easier.<br>
+- The image is a little bloated b/c of #9 & #10<br>
+- Src data to do most of the building and configuring is copied into the image (inherently the container) in /opt<br>
 
-------------- Rebuild the image manually with this command -------
-# You need to be in the same directory as the Containerfile b/c there are a lot of accopmanying files it needs to use in the build process
-podman build -t [sometagname] -f Containerfile .
+- Use the script to build the image then start an ephemeral container and attach to it for building/modifying purposes it drops to a bash shell and doesn't start the application
+Command to run on the <b></b>host</b>
+```
+bash rebuild.bash
+```
 
+Rebuild the image manually with this command<br>
+You need to be in the same directory as the Containerfile b/c there are a lot of accopmanying files it needs to use in the build process
+```
+podman build -t my-guac -f Containerfile .
+```
 
-------------  Make a POD to put our 2 containers in (they'll share the same loopback address which is great) ---------------
+Make a POD to put our 2 containers in (they'll share the same loopback address which is great)
+```
 podman pod create --name GUACAMOLE_APPLICATIONS -p 9090:8080 -p 5306:3306
-
+```
 
 
 # ALL OF THE AUTH EXTENSIONS CAN BE DOWNLOADED FROM HERE: https://guacamole.apache.org/releases/1.6.0/
