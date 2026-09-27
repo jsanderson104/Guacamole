@@ -20,7 +20,7 @@ RUN chown -R tomcat:tomcat /opt/tomcat9
 RUN apt update -y
 #apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 RUN	apt install -y dpkg
-RUN apt install -y guacd
+#RUN apt install -y guacd
 RUN	apt install -y openssl
 RUN	apt install -y build-essential
 RUN	apt install -y libcairo2-dev
