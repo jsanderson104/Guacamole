@@ -12,18 +12,18 @@ RUN apt update -y && \
 	#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 	apt install -y dpkg \
 	#guacd \
-	openssl \
-	build-essential \
-	libcairo2-dev \
-	libjpeg-turbo8-dev \
-	libpng-dev \
-	libtool-bin \
-        uuid-dev \
-	libossp-uuid-dev \
-	libavcodec-dev \
-	libavformat-dev \
-	libavutil-dev \
-	libswscale-dev
+	openssl 
+#	build-essential \
+#	libcairo2-dev \
+#	libjpeg-turbo8-dev \
+#	libpng-dev \
+#	libtool-bin \
+#   uuid-dev \
+#	libossp-uuid-dev \
+#	libavcodec-dev \
+#	libavformat-dev \
+#	libavutil-dev \
+#	libswscale-dev \
 #   freerdp2-dev \
 #	libpango1.0-dev \
 #	libssh2-1-dev \
