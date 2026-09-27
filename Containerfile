@@ -22,31 +22,16 @@ RUN apt-get install -y --reinstall debconf ca-certificates
 #apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 #RUN apt install -y guacd
 #RUN apt install -y freerdp2-dev
-RUN	apt install -y dpkg openssl build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin
-RUN apt install -y uuid-dev
-RUN	apt install -y libossp-uuid-dev
-RUN	apt install -y libavcodec-dev
-RUN	apt install -y libavformat-dev
-RUN	apt install -y libavutil-dev
-RUN	apt install -y libswscale-dev
+RUN	apt install -y dpkg openssl build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libpango1.0-dev \
+libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvorbis-dev libwebp-dev libpulse-dev
 
-RUN	apt install -y libpango1.0-dev
-RUN	apt install -y libssh2-1-dev
-RUN	apt install -y libvncserver-dev
-RUN	apt install -y libtelnet-dev
-RUN	apt install -y libwebsockets-dev
-RUN	apt install -y libssl-dev
-RUN	apt install -y libvorbis-dev
-RUN	apt install -y libwebp-dev
-RUN apt install -y	libpulse-dev
 
-RUN echo "#############################################"
 
 # install java runtime
 RUN apt install -y openjdk-17-jdk 
 RUN dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
 
-RUN echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
 # Download and compile Guacamole with bash script
 COPY guacamole-server-1.6.0.tar.gz /opt/src_downloads
 COPY scripts/build_guacamole.bash /opt/scripts
