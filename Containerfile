@@ -50,7 +50,7 @@ RUN echo "#############################################"
 # install java runtime
 RUN apt install -y openjdk-17-jdk && dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
 
-
+RUN echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 # Download and compile Guacamole with bash script
 COPY guacamole-server-1.6.0.tar.gz /opt/src_downloads
 COPY scripts/build_guacamole.bash /opt/scripts
