@@ -17,33 +17,32 @@ RUN mkdir /opt/scripts
 RUN chown -R tomcat:tomcat /opt/tomcat9
 
 # Install packages needed to compile stuff. 
-RUN apt update -y && \
-	#apt upgrade -y && \
-	#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
-	apt install -y dpkg \
-	guacd \
-	openssl \
-	build-essential \
-	libcairo2-dev \
-	libjpeg-turbo8-dev \
-	libpng-dev \
-	libtool-bin \
-   uuid-dev \
-	libossp-uuid-dev \
-	libavcodec-dev \
-	libavformat-dev \
-	libavutil-dev \
-	libswscale-dev \
-   freerdp2-dev \
-	libpango1.0-dev \
-	libssh2-1-dev \
-	libvncserver-dev \
-	libtelnet-dev \
-	libwebsockets-dev \
-	libssl-dev \
-	libvorbis-dev \
-	libwebp-dev \
-	libpulse-dev
+RUN apt update -y
+#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
+RUN	apt install -y dpkg
+RUN apt install -y guacd
+RUN	apt install -y openssl
+RUN	apt install -y build-essential
+RUN	apt install -y libcairo2-dev
+RUN	apt install -y libjpeg-turbo8-dev
+RUN	apt install -y libpng-dev
+RUN	apt install -y libtool-bin
+RUN apt install -y uuid-dev
+RUN	apt install -y libossp-uuid-dev
+RUN	apt install -y libavcodec-dev
+RUN	apt install -y libavformat-dev
+RUN	apt install -y libavutil-dev
+RUN	apt install -y libswscale-dev
+RUN apt install -y freerdp2-dev
+RUN	apt install -y libpango1.0-dev
+RUN	apt install -y libssh2-1-dev
+RUN	apt install -y libvncserver-dev
+RUN	apt install -y libtelnet-dev
+RUN	apt install -y libwebsockets-dev
+RUN	apt install -y libssl-dev
+RUN	apt install -y libvorbis-dev
+RUN	apt install -y libwebp-dev
+RUN apt install -y	libpulse-dev
 
 RUN echo "#############################################"
 
