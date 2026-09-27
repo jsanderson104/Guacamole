@@ -18,6 +18,7 @@ RUN chown -R tomcat:tomcat /opt/tomcat9
 
 # Install packages needed to compile stuff.
 RUN apt update -y
+RUN apt-get install --reinstall debconf ca-certificates
 #apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 RUN	apt install -y dpkg
 #RUN apt install -y guacd
