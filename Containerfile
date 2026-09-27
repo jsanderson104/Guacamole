@@ -18,37 +18,38 @@ RUN chown -R tomcat:tomcat /opt/tomcat9
 
 # Install packages needed to compile stuff. 
 RUN apt update -y && \
-	apt upgrade -y && \
+	#apt upgrade -y && \
 	#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 	apt install -y dpkg \
-	#guacd \
-	openssl 
-#	build-essential \
-#	libcairo2-dev \
-#	libjpeg-turbo8-dev \
-#	libpng-dev \
-#	libtool-bin \
-#   uuid-dev \
-#	libossp-uuid-dev \
-#	libavcodec-dev \
-#	libavformat-dev \
-#	libavutil-dev \
-#	libswscale-dev \
-#   freerdp2-dev \
-#	libpango1.0-dev \
-#	libssh2-1-dev \
-#	libvncserver-dev \
-#	libtelnet-dev \
-#	libwebsockets-dev \
-#	libssl-dev \
-#	libvorbis-dev \
-#	libwebp-dev \
-#	libpulse-dev
+	guacd \
+	openssl \
+	build-essential \
+	libcairo2-dev \
+	libjpeg-turbo8-dev \
+	libpng-dev \
+	libtool-bin \
+   uuid-dev \
+	libossp-uuid-dev \
+	libavcodec-dev \
+	libavformat-dev \
+	libavutil-dev \
+	libswscale-dev \
+   freerdp2-dev \
+	libpango1.0-dev \
+	libssh2-1-dev \
+	libvncserver-dev \
+	libtelnet-dev \
+	libwebsockets-dev \
+	libssl-dev \
+	libvorbis-dev \
+	libwebp-dev \
+	libpulse-dev
 
 RUN echo "#############################################"
 
 # install java runtime
-RUN apt install -y openjdk-17-jdk && dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
+RUN apt install -y openjdk-17-jdk 
+RUN dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
 
 RUN echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 # Download and compile Guacamole with bash script
