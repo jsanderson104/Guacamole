@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:24.04
 USER root
 WORKDIR /
 ARG UID=1003
@@ -19,7 +19,7 @@ RUN apt-get install -y --reinstall debconf ca-certificates
 #RUN apt install -y guacd
 
 RUN	apt install -y dpkg openssl build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libpango1.0-dev \
-libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvorbis-dev libwebp-dev libpulse-dev freerdp3-dev
+libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvorbis-dev libwebp-dev libpulse-dev freerdp2-dev
 
 
 
