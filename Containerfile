@@ -11,7 +11,7 @@ RUN apt update -y && \
 	#apt upgrade -y && \
 	#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 	apt install -y dpkg \
-#	guacd \
+	guacd \
 	openssl \
 	build-essential \
 	libcairo2-dev \
@@ -36,16 +36,16 @@ RUN apt update -y && \
 #	libpulse-dev
 
 # Setup the OS like I want and organize the build process
-RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd && \
-	echo "guacamole:x:1003:" >> /etc/group && \
-	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd && \
-	echo "tomcat:x:2003:" >> /etc/group && \
-	mkdir /opt/tomcat9  && \
-	mkdir /opt/src_downloads  && \
-	mkdir /opt/src  && \
-        mkdir /app && \
-        mkdir /opt/scripts && \
-	chown -R tomcat:tomcat /opt/tomcat9
+RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
+RUN	echo "guacamole:x:1003:" >> /etc/group
+RUN	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd
+RUN	echo "tomcat:x:2003:" >> /etc/group
+RUN	mkdir /opt/tomcat9
+RUN	mkdir /opt/src_downloads
+RUN	mkdir /opt/src
+RUN mkdir /app
+RUN mkdir /opt/scripts
+RUN chown -R tomcat:tomcat /opt/tomcat9
 
 
 # install java runtime
