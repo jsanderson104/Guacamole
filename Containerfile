@@ -17,8 +17,7 @@ RUN mkdir /opt/scripts
 RUN chown -R tomcat:tomcat /opt/tomcat9
 
 # Install packages needed to compile stuff.
-RUN echo "SLEEPING"
-RUN apt update -y && sleep 1000
+RUN apt update -y
 #apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 RUN	apt install -y dpkg
 #RUN apt install -y guacd
