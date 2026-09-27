@@ -1,14 +1,24 @@
 FROM ubuntu:24.04
-
 USER root
 WORKDIR /
-
 ARG UID=1003
 ARG GID=1003
 
+# Setup the OS like I want and organize the build process
+RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
+RUN	echo "guacamole:x:1003:" >> /etc/group
+RUN	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd
+RUN	echo "tomcat:x:2003:" >> /etc/group
+RUN	mkdir /opt/tomcat9
+RUN	mkdir /opt/src_downloads
+RUN	mkdir /opt/src
+RUN mkdir /app
+RUN mkdir /opt/scripts
+RUN chown -R tomcat:tomcat /opt/tomcat9
+
 # Install packages needed to compile stuff. 
 RUN apt update -y && \
-	#apt upgrade -y && \
+	apt upgrade -y && \
 	#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 	apt install -y dpkg \
 	#guacd \
@@ -35,18 +45,7 @@ RUN apt update -y && \
 #	libwebp-dev \
 #	libpulse-dev
 
-# Setup the OS like I want and organize the build process
-RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
-RUN	echo "guacamole:x:1003:" >> /etc/group
-RUN	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd
-RUN	echo "tomcat:x:2003:" >> /etc/group
-RUN	mkdir /opt/tomcat9
-RUN	mkdir /opt/src_downloads
-RUN	mkdir /opt/src
-RUN mkdir /app
-RUN mkdir /opt/scripts
-RUN chown -R tomcat:tomcat /opt/tomcat9
-
+RUN echo "#############################################"
 
 # install java runtime
 RUN apt install -y openjdk-17-jdk && dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
