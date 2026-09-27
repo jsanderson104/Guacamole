@@ -9,7 +9,8 @@ ARG GID=1003
 # Install packages needed to compile stuff. 
 RUN apt update -y && \
 	#apt upgrade -y && \
-	apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
+	#apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
+	apt install -y dpkg guacd openssl \
 	build-essential \
 	libcairo2-dev \
 	libjpeg-turbo8-dev \
