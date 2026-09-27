@@ -9,11 +9,7 @@ RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
 RUN	echo "guacamole:x:1003:" >> /etc/group
 RUN	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd
 RUN	echo "tomcat:x:2003:" >> /etc/group
-RUN	mkdir /opt/tomcat9
-RUN	mkdir /opt/src_downloads
-RUN	mkdir /opt/src
-RUN mkdir /app
-RUN mkdir /opt/scripts
+RUN	mkdir /opt/tomcat9 /opt/src_downloads /opt/src /app /opt/scripts
 RUN chown -R tomcat:tomcat /opt/tomcat9
 
 # Install packages needed to compile stuff.
@@ -21,9 +17,9 @@ RUN apt update -y
 RUN apt-get install -y --reinstall debconf ca-certificates
 #apt install -y iproute2 ncat vim net-tools dpkg guacd openssl less \
 #RUN apt install -y guacd
-#RUN apt install -y freerdp2-dev
+
 RUN	apt install -y dpkg openssl build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libpango1.0-dev \
-libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvorbis-dev libwebp-dev libpulse-dev
+libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvorbis-dev libwebp-dev libpulse-dev freerdp3-dev
 
 
 
