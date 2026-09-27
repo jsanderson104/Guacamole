@@ -22,16 +22,16 @@ RUN apt update -y && \
 	libavformat-dev \
 	libavutil-dev \
 	libswscale-dev \
-        freerdp2-dev \
-	libpango1.0-dev \
-	libssh2-1-dev \
-	libvncserver-dev \
-	libtelnet-dev \
-	libwebsockets-dev \
-	libssl-dev \
-	libvorbis-dev \
-	libwebp-dev \
-	libpulse-dev
+#   freerdp2-dev \
+#	libpango1.0-dev \
+#	libssh2-1-dev \
+#	libvncserver-dev \
+#	libtelnet-dev \
+#	libwebsockets-dev \
+#	libssl-dev \
+#	libvorbis-dev \
+#	libwebp-dev \
+#	libpulse-dev
 
 # Setup the OS like I want and organize the build process
 RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd && \
