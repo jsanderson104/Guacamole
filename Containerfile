@@ -1,5 +1,5 @@
 FROM ubuntu:24.04
-USER root
+USER podman-builder
 WORKDIR /
 ARG UID=1003
 ARG GID=1003
