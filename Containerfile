@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:24.04
 USER root
 WORKDIR /
 ARG UID=1003
