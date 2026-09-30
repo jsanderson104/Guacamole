@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VER="9.0.115"
+VER="9.0.122"
 DLURL="https://dlcdn.apache.org/tomcat/tomcat-9/v${VER}/bin/apache-tomcat-${VER}.tar.gz"
 DLDIR=/opt/src_downloads
 
