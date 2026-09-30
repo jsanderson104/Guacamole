@@ -1,5 +1,8 @@
 #!/bin/bash
 
-# Set the Buildah temp directory to home instead of /var/tmp which has little space.
-TMPDIR=/home podman build -t ubuntu2404-guac -f Containerfile
+# Set the Buildah temp directory to home instead of /var/tmp which has little space.Not running as root so this wont work due to perms on /home for avg user.
+#TMPDIR=/home podman build -t ubuntu2404-guac -f Containerfile
+
+podman build -t ubuntu2404-guac -f Containerfile
+
 podman run -it  -p 9090:8080 --rm localhost/ubuntu2404-guac:latest
