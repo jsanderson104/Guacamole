@@ -9,6 +9,9 @@ RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
 RUN	echo "guacamole:x:1003:" >> /etc/group
 RUN	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd
 RUN	echo "tomcat:x:2003:" >> /etc/group
+
+RUN echo "$(whoami)"
+
 RUN	mkdir /opt/tomcat9 /opt/src_downloads /opt/src /app /opt/scripts
 RUN chown -R tomcat:tomcat /opt/tomcat9
 
