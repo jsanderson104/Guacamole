@@ -2,21 +2,8 @@
 FROM docker.io/library/mariadb
 WORKDIR /
 
-RUN apt update -y && apt install -y net-tools default-mysql-client
+RUN apt update -y && apt install -y default-mysql-client
 RUN rmdir /home /mnt /media /srv
-RUN mkdir /opt/scripts
-# Setup the OS like I want and organize the build process
-COPY guacamole_db_setup_files/001-create-schema.sql /opt/scripts
-COPY guacamole_db_setup_files/002-create-admin-user.sql /opt/scripts
-COPY scripts/import_guacdb.bash /opt/scripts/
-RUN chmod 755 /opt/scripts
-RUN chmod 644 /opt/scripts/*
-RUN cd /opt/scripts
 
-USER mysql
-#RUN /usr/sbin/mariadbd & 
-#RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
-#RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
-
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-EXPOSE 3306
+COPY guacamole_db_setup_files/001-create-schema.sql /docker-entrypoint-initdb.d
+COPY guacamole_db_setup_files/002-create-admin-user.sql /docker-entrypoint-initdb.d
