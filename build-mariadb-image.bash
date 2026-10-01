@@ -3,7 +3,7 @@
 # The end of this build will tag and upload the result image to docker.io/jsanderson104/guacamole-k8s:mariadb-1.6.0
 # There's a similar file in this repo "build-guacamole-image.bash" that will build a guacamole container image ( through a separate Jenkins job but using same repo) that already has the webui/tomcat and guacd running.
 
-podman build -t mariadb-guac160 -f Containerfile
+podman build -t mariadb-guac160 -f Containerfile.MariaDB
 
 # Find my Linux UID
 MYUID=$(getent passwd $(whoami) | cut -d: -f3)
