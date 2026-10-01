@@ -2,7 +2,7 @@
 FROM docker.io/library/mariadb
 WORKDIR /
 
-RUN apt update -y && apt install -y default-mysql-client
+RUN apt update -y && apt install -y mysql-client
 RUN rmdir /home /mnt /media /srv
 
 COPY guacamole_db_setup_files/001-create-schema.sql /docker-entrypoint-initdb.d/
