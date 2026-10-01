@@ -68,9 +68,6 @@ RUN ln -s /app/tomcat.service /app/guacamole-client.service
 # has a lot to do with how docker entrypoint and cmd work together.
 RUN chmod +x /app/env.bash /app/*.service
 
-# Redirect Tomcat logs to stdout
-RUN ln -s /dev/stdout /appt/tomcat/logs/catalina.out
-
 
 USER root
 EXPOSE 8080 4822 5900 22 23 3389 9090
