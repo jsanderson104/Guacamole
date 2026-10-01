@@ -3,7 +3,8 @@ USER root
 WORKDIR /
 ARG UID=1003
 ARG GID=1003
-
+ENTRYPOINT ["/bin/bash"]
+CMD ["/app/env.bash"]
 # Setup the OS like I want and organize the build process
 RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
 RUN	echo "guacamole:x:1003:" >> /etc/group
@@ -62,6 +63,7 @@ COPY mysql-connector-j-9.5.0.jar  /app/guacamole-client/lib
 COPY scripts/env.bash /app
 COPY scripts/tomcat.service /app
 COPY scripts/guacd.service /app
+RUN chmod +x env.bash *.service
 RUN ln -s /app/tomcat.service /app/guacamole-client.service
 
 # Cleanup some
@@ -71,7 +73,6 @@ libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvor
 
 USER root
 EXPOSE 8080
-#CMD ["/bin/bash"]
-CMD ["/bin/bash", " /app/env.bash"]
+
 
 # To start the apps run this inside the container: bash /app/env.bash
