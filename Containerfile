@@ -70,11 +70,12 @@ RUN mkdir -p /app/guacamole/extenions_downloaded
 # Install MySQL Java driver to /app/guacamole-client/lib
 COPY mysql-connector-j-9.5.0.jar  /app/guacamole-client/lib
 
-
+# These are my custom scripts for starting guacd and tomcat/guac webui.
 COPY scripts/env.bash /app
 COPY scripts/tomcat.service /app
 COPY scripts/guacd.service /app
 RUN ln -s /app/tomcat.service /app/guacamole-client.service
+
 
 USER root
 EXPOSE 8080
