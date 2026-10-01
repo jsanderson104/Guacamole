@@ -66,7 +66,7 @@ COPY scripts/guacd.service /app
 RUN ln -s /app/tomcat.service /app/guacamole-client.service
 # Important that scripts are exec (chmod +x) so that the docker entrypoint can launch them without calling bash infront of the env.bash
 # has a lot to do with how docker entrypoint and cmd work together.
-RUN chmod +x env.bash *.service
+RUN chmod +x /app/env.bash /app/*.service
 
 # Cleanup some
 RUN rm -rf /opt/*
