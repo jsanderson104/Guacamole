@@ -9,6 +9,7 @@ COPY guacamole_db_setup_files/001-create-schema.sql /opt/scripts
 COPY guacamole_db_setup_files/002-create-admin-user.sql /opt/scripts
 COPY scripts/import_guacdb.bash /opt/scripts/
 RUN cd /opt/scripts
-RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
-RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
+RUN sleep 3000
+#RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
+#RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
 EXPOSE 3306
