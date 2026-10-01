@@ -11,7 +11,7 @@ RUN	echo "tomcat:x:2003:2003::/opt/tomcat9:/bin/bash" >> /etc/passwd
 RUN	echo "tomcat:x:2003:" >> /etc/group
 RUN	mkdir /opt/tomcat9 /opt/src_downloads /opt/src /app /opt/scripts
 RUN chown -R tomcat:tomcat /opt/tomcat9
-RUN apt-get install -y --reinstall debconf ca-certificates
+#RUN apt-get install -y --reinstall debconf ca-certificates
 
 # Meat and potatoes for packages needed for building the apps.
 RUN	apt install -y dpkg openssl build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libpango1.0-dev \
