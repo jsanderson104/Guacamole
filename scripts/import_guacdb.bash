@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SQLUSER="root"
+SQLUSER="guac"
 SQLPW="guac"
 
 
