@@ -28,7 +28,7 @@ libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvor
 
 # install java runtime
 RUN apt install -y openjdk-17-jdk 
-RUN dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
+#RUN dpkg-query -L openjdk-17-jdk > /opt/openjdk-17-jdk-files.log
 
 
 # Download and compile Guacamole with bash script
@@ -50,10 +50,10 @@ RUN bash /opt/scripts/download_tomcat9-src.bash
 # Each extension needs it's properties set in guacamole.properties
 COPY extensions_downloaded/ /app/guacamole-client/
 COPY extensions/guacamole-auth-ldap-1.6.0.jar /app/guacamole-client/extensions
-COPY extensions/guacamole-auth-header-1.6.0.jar /app/guacamole-client/extensions
-COPY extensions/guacamole-auth-jdbc-mysql-1.6.0.jar /app/guacamole-client/extensions
-COPY extensions/guacamole-auth-sso-openid-1.6.0.jar /app/guacamole-client/extensions
-COPY extensions/guacamole-auth-sso-ssl-1.6.0.jar /app/guacamole-client/extensions
+#COPY extensions/guacamole-auth-header-1.6.0.jar /app/guacamole-client/extensions
+#COPY extensions/guacamole-auth-jdbc-mysql-1.6.0.jar /app/guacamole-client/extensions
+#COPY extensions/guacamole-auth-sso-openid-1.6.0.jar /app/guacamole-client/extensions
+#COPY extensions/guacamole-auth-sso-ssl-1.6.0.jar /app/guacamole-client/extensions
 WORKDIR /app/guacamole-client
 RUN chown -R guacamole:guacamole /app/guacamole-client/*
 
@@ -78,7 +78,7 @@ RUN ln -s /app/tomcat.service /app/guacamole-client.service
 
 USER root
 EXPOSE 8080
-CMD ["/bin/bash"]
-
+#CMD ["/bin/bash"]
+CMD ["/bin/bash", " /app/env.bash"]
 
 # To start the apps run this inside the container: bash /app/env.bash
