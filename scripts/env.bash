@@ -7,5 +7,6 @@ PATH=$PATH:/app/tomcat/bin:/app/guacamole/sbin:/app/guacamole/bin:/app/tomcat/bi
 #/app/tomcat/bin/startup.sh
 #/app/guacamole/sbin/guacd -L debug 
 
-bash /app/tomcat.service start
-bash /app/guacd.service start
+bash /app/tomcat.service start > /dev/stdout
+bash /app/guacd.service start > /dev/stdout
+
