@@ -12,7 +12,7 @@ RUN chmod 755 /opt/scripts
 RUN chmod 644 /opt/scripts/*
 RUN cd /opt/scripts
 
-USER mariadb
+#USER mariadb
 RUN sleep 9999
 RUN /usr/sbin/mariadbd & 
 RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
