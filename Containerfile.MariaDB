@@ -11,5 +11,6 @@ COPY scripts/import_guacdb.bash /opt/scripts/
 RUN cd /opt/scripts
 RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
 RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
+USER mariadb
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 EXPOSE 3306
