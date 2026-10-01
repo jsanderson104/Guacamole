@@ -1,0 +1,9 @@
+FROM mariadb:latest
+WORKDIR /
+
+
+# Setup the OS like I want and organize the build process
+COPY guacamole-server-1.6.0.tar.gz /opt/src_downloads
+COPY scripts/build_guacamole.bash /opt/scripts
+
+EXPOSE 3306
