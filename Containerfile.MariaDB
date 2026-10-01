@@ -1,7 +1,7 @@
 FROM docker.io/library/mariadb
 WORKDIR /
 
-RUN apt update -y && apt install net-tools default-mysql-client
+RUN apt update -y && apt install -y net-tools default-mysql-client
 RUN rmdir /home /mnt /media /srv
 RUN mkdir /opt/scripts
 # Setup the OS like I want and organize the build process
