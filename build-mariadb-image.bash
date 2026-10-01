@@ -14,4 +14,4 @@ cp /home/podman-builder/workspace/Build-Nginx-Image/auth.json /run/user/$MYUID/c
 podman login docker.io || exit 1
 
 podman tag mariadb-guac160 mariadb-guac160:latest
-podman push localhost/mariadb-guac160:latest docker.io/jsanderson104/guacamole-k8s:mariadb-guac160
+podman push localhost/mariadb-guac160:latest docker.io/jsanderson104/guacamole-k8s:mariadb
