@@ -70,7 +70,7 @@ RUN chmod +x /app/env.bash /app/*.service
 
 # Cleanup some
 RUN rm -rf /opt/*
-RUN apt remove -y dpkg openssl build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libpango1.0-dev \
+# RUN apt remove -y build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libpango1.0-dev \
 libssh2-1-dev libvncserver-dev libtelnet-dev libwebsockets-dev libssl-dev libvorbis-dev libwebp-dev libpulse-dev freerdp3-dev wget
 
 USER root
