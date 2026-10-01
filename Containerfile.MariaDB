@@ -13,9 +13,9 @@ RUN chmod 644 /opt/scripts/*
 RUN cd /opt/scripts
 
 USER mysql
-RUN /usr/sbin/mariadbd & 
-RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
-RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
+#RUN /usr/sbin/mariadbd & 
+#RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
+#RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 EXPOSE 3306
