@@ -14,7 +14,7 @@ else
 fi
 
 echo "Begin import MariaDB: $DB_NAME .... please wait. Depending on DB size this could take a few minutes.."
-mysql -u$SQLUSER -p$SQLPW -h 127.0.0.1 -P 5306 "$DB_NAME" < $IMPORT
+mysql -u$SQLUSER -p$SQLPW -h 127.0.0.1 -P 3306 "$DB_NAME" < $IMPORT
 
 # Check if the command succeeded
 if [ $? -eq 0 ]; then
