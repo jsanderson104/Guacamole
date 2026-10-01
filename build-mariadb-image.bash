@@ -6,12 +6,10 @@
 podman build -t mariadb-guac160 -f Containerfile.MariaDB
 
 # Find my Linux UID
-MYUID=$(getent passwd $(whoami) | cut -d: -f3)
+#MYUID=$(getent passwd $(whoami) | cut -d: -f3)
 
 # Set Docker.io registry creds so I can push image
-cp /home/podman-builder/workspace/Build-Nginx-Image/auth.json /run/user/$MYUID/containers/auth.json
-
-podman login docker.io || exit 1
-
-podman tag mariadb-guac160 mariadb-guac160:latest
-podman push localhost/mariadb-guac160:latest docker.io/jsanderson104/guacamole-k8s:mariadb
+#cp /home/podman-builder/workspace/Build-Nginx-Image/auth.json /run/user/$MYUID/containers/auth.json
+#podman login docker.io || exit 1
+#podman tag mariadb-guac160 mariadb-guac160:latest
+#podman push localhost/mariadb-guac160:latest docker.io/jsanderson104/guacamole-k8s:mariadb
