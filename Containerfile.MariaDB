@@ -1,4 +1,4 @@
-FROM mariadb:latest
+FROM docker.io/library/mariadb
 WORKDIR /
 
 RUN apt update -y && apt install net-tools
