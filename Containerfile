@@ -3,8 +3,8 @@ USER root
 WORKDIR /
 ARG UID=1003
 ARG GID=1003
-ENTRYPOINT ["/bin/bash"]
-CMD ["/app/env.bash"]
+ENTRYPOINT ["/app/env.bash"]
+CMD ["start"]
 # Setup the OS like I want and organize the build process
 RUN	echo "guacamole:x:1003:1003::/opt/guacamole:/bin/bash" >> /etc/passwd
 RUN	echo "guacamole:x:1003:" >> /etc/group
@@ -63,8 +63,10 @@ COPY mysql-connector-j-9.5.0.jar  /app/guacamole-client/lib
 COPY scripts/env.bash /app
 COPY scripts/tomcat.service /app
 COPY scripts/guacd.service /app
-RUN chmod +x env.bash *.service
 RUN ln -s /app/tomcat.service /app/guacamole-client.service
+# Important that scripts are exec (chmod +x) so that the docker entrypoint can launch them without calling bash infront of the env.bash
+# has a lot to do with how docker entrypoint and cmd work together.
+RUN chmod +x env.bash *.service
 
 # Cleanup some
 RUN rm -rf /opt/*
