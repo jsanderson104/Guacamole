@@ -13,7 +13,6 @@ RUN chmod 644 /opt/scripts/*
 RUN cd /opt/scripts
 
 USER mysql
-RUN sleep 9999
 RUN /usr/sbin/mariadbd & 
 RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/001-create-schema.sql
 RUN bash /opt/scripts/import_guacdb.bash guac  /opt/scripts/002-create-admin-user.sql
